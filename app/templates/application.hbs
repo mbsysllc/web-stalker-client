@@ -1,0 +1,12 @@
+{{input value=pageUrl}} 
+<button {{action "getPage"}}>Get page</button>
+<div>
+  <p>Current: {{view.currentPath}}</p>
+  <p>Selected: {{input value=view.selectedPath}}</p>
+  <button {{action "clear" target="view"}}>Clear target</button>
+  <button {{action "sendSelector" view.selectedPath}}>Send selector</button>
+</div>
+<div class="current-page-html">
+  {{{currentPageHtml}}}
+</div>
+{{outlet}}
