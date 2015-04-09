@@ -1,10 +1,28 @@
-{{input value=pageUrl}} 
-<button {{action "getPage"}}>Get page</button>
-<div>
-  <p>Current: {{view.currentPath}}</p>
-  <p>Selected: {{input value=view.selectedPath}}</p>
-  <button {{action "clear" target="view"}}>Clear target</button>
-  <button {{action "sendSelector" view.selectedPath}}>Send selector</button>
+<h1>Web Stalker 0.1</h1>
+<div class="page-options">
+  {{input value=pageUrl}} 
+  <button {{action "getPage"}}>Get page</button>
+  <div>
+    <p>Current: {{view.currentPath}}</p>
+    <p>Selected: {{input value=view.selectedPath}}</p>
+    <p>Action: {{input value=actionValue}}</p>
+    <ul>
+      {{#each child in childs}}
+        <li>
+          Name: {{input value=child.name}} - Selector: {{input value=child.selector}}
+        </li>
+      {{/each}}
+    </ul>
+    <button {{action "addChild"}}>Add new child</button>
+    <button {{action "clear" target="view"}}>Clear target</button>
+    <button {{action "sendSelector" view.selectedPath}}>Get results!</button>
+  </div>
+  <div>
+    <h2>Preview</h2>
+    <pre class="response-preview">
+      {{{responseResult}}}
+    </pre>
+  </div>
 </div>
 <div class="current-page-html">
   {{{currentPageHtml}}}
